@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    
+    <div id="hero">
+        <div class="navbar">
+            <img class="logo" src="assets/img/slider/logo.png" alt="">
+            <div class="user">
+                <button type="button">Explore</button>
+                <img src="assets/img/slider/user.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="info">
+            <h1 id="tieude">DISCOVER</h1>
+            <p>Lorem ipsum delor sit amet, consectrtur adipiscing elit. Praesent vestibulum nulla id eros rhoncus, at viverra velit tempor.</p>
+            <input type="text" placeholder="Search">
+        </div>
+    </div>
+
+    <div class="slider">
+        <img src="assets/img/slider/left-arrow.png" alt="" id="prev">
+        <div class="preview">
+            <img src="assets/img/slider/small1.png" alt="" class="active thumbnail">
+            <img src="assets/img/slider/small2.png" alt="" class="thumbnail">
+            <img src="assets/img/slider/small3.png" alt="" class="thumbnail">
+            <img src="assets/img/slider/small4.png" alt="" class="thumbnail">
+            <img src="assets/img/slider/small5.png" alt="" class="thumbnail">
+        </div>
+        <img src="assets/img/slider/right-arrow.png" alt="" id="next">
+
+        <script>
+            var prev = document.getElementById("prev");
+            var next = document.getElementById("next");
+            var thumbnail = document.getElementsByClassName("thumbnail");
+            var hero = document.getElementById("hero");
+
+            var backgroundImg = new Array(
+                "assets/img/slider/bg1.png",
+                "assets/img/slider/bg2.png",
+                "assets/img/slider/bg3.png",
+                "assets/img/slider/bg4.png",
+                "assets/img/slider/bg5.png"
+            );
+
+            let i = 0;
+            next.onclick = function(){
+                if(i<4){
+                    hero.style.backgroundImage = 'url("'+backgroundImg[i+1]+'")';
+                    thumbnail[i+1].classList.add("active");
+                    thumbnail[i].classList.remove("active");
+                    i++;
+                }else if(i=4){
+                    thumbnail[0].classList.add("active");
+                    thumbnail[4].classList.remove("active");
+                    i=0;
+                }
+            }
+            prev.onclick = function(){
+                if(i>0){
+                    hero.style.backgroundImage = 'url("'+backgroundImg[i-1]+'")';
+                    thumbnail[i-1].classList.add("active");
+                    thumbnail[i].classList.remove("active");
+                    i--;
+                }else{
+                    thumbnail[4].classList.add("active");
+                    thumbnail[0].classList.remove("active");
+                    i=4;
+                }
+            }
+
+
+        </script>
+
+    </div>
+</body>
+</html>
